@@ -1,2 +1,43 @@
-h1 Advert#index
-p Find me in app/views/advert/index.html.slim
+nav.navbar.navbar-default
+  .container-fluid
+    /! Brand and toggle get grouped for better mobile display
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#"  Mini-Store
+    /! Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          a href="#"  Sign in
+    /! /.navbar-collapse
+  /! /.container-fluid
+
+
+
+section.panel
+  header.panel-heading
+    | Gestion des annonces
+  .panel-body
+
+    table.table.table-striped
+      thead
+        tr
+          th Marque
+          th Modèle
+          th Prix
+          th État
+          th Date de mise en vente
+
+      - @adverts.each do |advert|
+
+        tbody
+          tr
+            td = advert.brand
+            td = advert.model
+            td = advert.price
+            td = advert.state
+            td = advert.created_at
