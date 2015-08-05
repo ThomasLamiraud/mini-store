@@ -32,12 +32,12 @@ section.panel
           th État
           th Date de mise en vente
 
-      - @adverts.each do |advert|
+      - @adverts.includes(:model).each do |advert|
 
         tbody
           tr
-            td = advert.brand
-            td = advert.model
+            td = advert.model.brand.name
+            td = advert.model.name
             td = advert.price
             td = advert.state
             td = advert.created_at
