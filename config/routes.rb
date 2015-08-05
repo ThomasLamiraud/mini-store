@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get '/admin', to: 'admin#index', as: :admin
+  get :me, to: 'admin#login'
+  post 'me/session', to: 'admin#open_session'
+
 end

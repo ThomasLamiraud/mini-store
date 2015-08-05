@@ -15,3 +15,13 @@ third:
   name: Punto
   year: 2002
   brand_id: 2
+fourth:
+  id: 4
+  name: Clio
+  year: 2001
+  brand_id: 3
+fifth:
+  id: 5
+  name: 206
+  year: 2008
+  brand_id: 4
