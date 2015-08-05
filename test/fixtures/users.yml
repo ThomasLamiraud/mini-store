@@ -7,11 +7,11 @@
 one:
   id: 1
   role: 0
-  firstname: Pablo
-  lastname: Chebard
+  first_name: Pablo
+  last_name: Chebard
 #
 two:
   id: 2
   role: 1
-  firstname: Isaac
-  lastname: Chatel
+  first_name: Isaac
+  last_name: Chatel
