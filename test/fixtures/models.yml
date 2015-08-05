@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: Serie III
+  year: 2007
+  brand_id: 1
+wrong_date_model:
+  id: 2
+  name: Punto
+  year: 3000
+  brand_id: 2
+third:
+  id: 3
+  name: Punto
+  year: 2002
+  brand_id: 2
