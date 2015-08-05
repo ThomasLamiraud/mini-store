@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get :me, to: 'admin#login'
   post 'me/session', to: 'admin#open_session'
 
+  resources :brand
+  resources :model
+
 end
