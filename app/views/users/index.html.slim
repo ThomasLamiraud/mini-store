@@ -1,29 +1,4 @@
-nav.navbar.navbar-default
-  .container-fluid
-    /! Brand and toggle get grouped for better mobile display
-    .navbar-header
-      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="#"  Mini-Store
-    /! Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        li
-          - if user_signed_in?
-            a href="#"
-              = "Bonjour #{current_user.first_name}"
-          - else
-            = link_to 'Se connecter', new_user_session_path
-        li
-          - if user_signed_in?
-            = link_to 'Se déconnecter', destroy_user_session_path, method: :delete
-          - else
-            = link_to "S'inscrire", new_user_registration_path
-    /! /.navbar-collapse
-  /! /.container-fluid
+= render partial: "layouts/partials/menu"
 
 section.panel
   header.panel-heading
