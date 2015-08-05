@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
@@ -42,5 +42,9 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 group :development do
   gem 'better_errors'
+end
+
+group :production do
+	gem 'rails_12factor'
 end
 
