@@ -43,7 +43,7 @@ section.panel
             td = model.brand.name
             td = model.created_at
             td
-              input.btn.btn-default type="button" value="Édition"
+              =link_to "Édition", edit_model_path(model.id), class: "btn btn-default"
             td
               input.btn.btn-default type="button" value="Suppression"
 
