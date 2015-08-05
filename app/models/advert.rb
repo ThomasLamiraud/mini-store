@@ -1,6 +1,4 @@
 class Advert < ActiveRecord::Base
-
-	belongs_to :user
-	belongs_to :order
-
+	has_one :order
+	belongs_to :model
 end
