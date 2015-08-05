@@ -12,7 +12,16 @@ nav.navbar.navbar-default
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a href="#"  Sign in
+          - if user_signed_in?
+            a href="#"
+              = "Bonjour #{current_user.first_name}"
+          - else
+            = link_to 'Se connecter', new_user_session_path
+        li
+          - if user_signed_in?
+            = link_to 'Se déconnecter', destroy_user_session_path, method: :delete
+          - else
+            = link_to "S'inscrire", new_user_registration_path
     /! /.navbar-collapse
   /! /.container-fluid
 
@@ -32,12 +41,12 @@ section.panel
           th État
           th Date de mise en vente
 
-      - @adverts.each do |advert|
+      - @adverts.includes(:model).each do |advert|
 
         tbody
           tr
-            td = advert.brand
-            td = advert.model
+            td = advert.model.brand.name
+            td = advert.model.name
             td = advert.price
             td = advert.state
             td = advert.created_at
