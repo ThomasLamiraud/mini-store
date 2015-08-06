@@ -1,5 +1,7 @@
 = render partial: "layouts/partials/menu"
 
+h2.text-center Édition de l'annonce
+
 .container
 	= form_for @advert, url: advert_path do |f|
 	  .form_title
@@ -20,4 +22,4 @@
 	          = f.label :model_id, "Modèle"
 	          = f.select(:model_id, options_from_collection_for_select(Model.all, :id, :name),{include_blank: false}, {class: "form-control m-bot15"})
 
-	  .actions = f.submit 'Modifier mon annonce', class: "btn_1 green medium"
+	  .actions = f.submit 'Modifier mon annonce', class: "btn btn-primary pull-right"
