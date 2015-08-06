@@ -29,9 +29,16 @@ class ChargesController < ApplicationController
   def create_order(advert, price)
     @order = Order.new(provider_id: current_user.id, total_price: price)
     if @order.save
+      update_advert(advert)
       redirect_to root_path, alert: 'Paiement effectué avec succès'
     else
       redirect_to root_path, alert: 'PB'
     end
+  end
+
+
+  def update_advert(advert)
+    advert = Advert.find(advert)
+    advert.update_attributes(status: "vendue")
   end
 end

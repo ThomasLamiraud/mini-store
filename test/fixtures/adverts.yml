@@ -6,8 +6,8 @@
 one:
   id: 1
   model_id: 1
-  price: 30.0
+  price: 300.0
 caca:
   id: 2
   model_id: 2
-  price: 15.0
+  price: 150.0
