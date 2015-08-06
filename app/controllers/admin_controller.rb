@@ -1,7 +1,9 @@
 class AdminController < ApplicationController
   before_action :fetch_user, only: [:open_session]
   def index
-
+    @brands = Brand.all
+    @models = Model.all
+    @adverts = Advert.all
   end
 
   def login
