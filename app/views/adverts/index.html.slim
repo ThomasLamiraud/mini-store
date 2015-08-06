@@ -14,7 +14,8 @@ section.panel
           th État
           th Date de mise en vente
           th Statut
-          th Achat
+          -if user_signed_in?
+            th Achat
 
       - @adverts.includes(:model).each do |advert|
 
@@ -26,7 +27,7 @@ section.panel
             td = advert.state
             td = advert.created_at
             td = advert.status
-            - if advert.status != "vendue"
+            - if advert.status != "vendue" && user_signed_in?
               td
                 = form_tag charges_path do |f|
 
