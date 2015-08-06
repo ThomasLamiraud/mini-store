@@ -30,7 +30,7 @@ class AdvertsController < ApplicationController
   def update
     respond_to do |format|
       if @advert.update(advert_params)
-        format.html { redirect_to admin_path, notice: 'Votre annonce a été mis à jour avec succès !' }
+        format.html { redirect_to admin_path, alert: 'Votre annonce a été mis à jour avec succès !' }
         format.json { render :show, status: :ok, location: @advert }
       else
         format.html { render :edit }
