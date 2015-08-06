@@ -1,5 +1,32 @@
 = render partial: "layouts/partials/menu"
 
+h2.text-center  Espace Membre
+
+section.panel
+  header.panel-heading
+    | Infos utilisateur
+  .panel-body
+
+    table.table.table-striped
+      thead
+        tr
+          th Nom
+          th Prénom
+          th Email
+          th Role
+          th Date de création
+          th Dernière connexion
+        tbody
+          tr
+            td = current_user.first_name
+            td = current_user.last_name
+            td = current_user.email
+            td = current_user.role
+            td = current_user.created_at
+            td = current_user.last_sign_in_at
+
+
+
 section.panel
   header.panel-heading
     | Gestion des commandes
@@ -20,4 +47,3 @@ section.panel
             td = order.total_price
             td = order.created_at
             td = order.advert_id
-
