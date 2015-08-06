@@ -1,6 +1,89 @@
 = render partial: "layouts/partials/menu"
 
-section.panel
-  header.panel-heading
-    | ADMIN Y'ALL
+.container
+  h1.text-center Panel Admin
 
+  section.panel
+    header.panel-heading
+      h3 Marques
+
+    table.table.table-striped
+        thead
+          tr
+            th Marque
+            th Date de création
+            th Édition
+            th Suppression
+        - @brands.each do |brand|
+          tbody
+            tr
+              td = brand.name
+              td = brand.created_at
+              td
+                input.btn.btn-primary type="button" value="Édition"
+              td
+                input.btn.btn-danger type="button" value="Suppression"
+
+
+  section.panel
+    header.panel-heading
+      h3 Modèles
+
+    table.table.table-striped
+        thead
+          tr
+            th Modèle
+            th Marque
+            th Date de création
+            th Édition
+            th Suppression
+
+        - @models.each do |model|
+          tbody
+            tr
+              td = model.name
+              td = model.brand.name
+              td = model.created_at
+              td
+                input.btn.btn-primary type="button" value="Édition"
+              td
+                input.btn.btn-danger type="button" value="Suppression"
+
+  section.panel
+    header.panel-heading
+      h3 Annonces
+
+    = link_to "Nouvelle Annonce", new_advert_path, class: "btn btn-success"
+
+    - if alert
+      p.text-success
+        = flash[:alert]
+    - if notice
+      p.text-danger
+        = flash[:notice]
+
+    table.table.table-striped
+        thead
+          tr
+            th Modèle
+            th Marque
+            th Prix
+            th État
+            th Date de création
+            th Édition
+            th Suppression
+
+        - @adverts.each do |advert|
+          tbody
+            tr
+              tbody
+            tr
+              td = advert.model.brand.name
+              td = advert.model.name
+              td = advert.price
+              td = advert.state
+              td = advert.created_at
+              td
+                = link_to "Édition", edit_advert_path(advert.id), class: "btn btn-primary"
+              td
+                = link_to "Suppression", advert_path(advert.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete
