@@ -43,13 +43,16 @@ section.panel
             td = model.brand.name
             td = model.created_at
             td
-              =link_to "Édition", edit_model_path(model.id), class: "btn btn-default"
+              input.btn.btn-default type="button" value="Édition"
             td
               input.btn.btn-default type="button" value="Suppression"
 
 section.panel
   header.panel-heading
     | Annonces
+
+  = link_to "Nouvelle Annonce", new_advert_path, class: "btn btn-default"
+  = flash[:alert]
 
   table.table.table-striped
       thead
@@ -73,9 +76,9 @@ section.panel
             td = advert.state
             td = advert.created_at
             td
-              input.btn.btn-default type="button" value="Édition"
+              = link_to "Édition", edit_advert_path(advert.id), class: "btn btn-default"
             td
-              input.btn.btn-default type="button" value="Suppression"
+              = link_to "Suppression", advert_path(advert.id), class: "btn btn-default", data: {:confirm => 'Etes-vous sûr ?'},method: :delete
 
 
 
