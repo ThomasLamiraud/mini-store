@@ -3,4 +3,21 @@
 section.panel
   header.panel-heading
     | Gestion des commandes
+  .panel-body
+
+    table.table.table-striped
+      thead
+        tr
+          th Prix
+          th Date
+          th Advert
+
+
+      - @orders.each do |order|
+
+        tbody
+          tr
+            td = order.total_price
+            td = order.created_at
+            td = order.advert_id
 
