@@ -10,13 +10,13 @@ Things you may want to cover:
 
 * Gem
 
-⋅⋅* gem "binding_of_caller"
-⋅⋅* gem 'rails', '4.1.6'
-⋅⋅* gem 'pg'
-⋅⋅* gem "slim-rails"
-⋅⋅* gem 'devise'
-⋅⋅* gem 'stripe'
-⋅⋅* gem 'better_errors'
+⋅⋅⋅gem "binding_of_caller"
+⋅⋅⋅gem 'rails', '4.1.6'
+⋅⋅⋅gem 'pg'
+⋅⋅⋅gem "slim-rails"
+⋅⋅⋅gem 'devise'
+⋅⋅⋅gem 'stripe'
+⋅⋅⋅gem 'better_errors'
 
 
 Please feel free to use a different markup language if you do not plan to run
