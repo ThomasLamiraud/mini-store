@@ -1,0 +1,30 @@
+= render partial: "layouts/partials/menu"
+= render partial: "layouts/partials/admin_side_bar"
+
+#page-wrapper
+	.row
+    .col-lg-12
+      h1.page-header Édition de l'annonce
+
+	.row
+		= form_for @advert, url: admin_advert_path do |f|
+		  .form_title
+		    .row
+		      .col-md-6.col-sm-6
+		        .form-group
+		          = f.label :price, "Prix"
+		          = f.text_field :price, class: 'form-control', value: "#{@advert.price}"
+					p
+					| toto
+		      .col-md-6.col-sm-6
+		        .form-group
+		          = f.label :state, "État"
+		          = f.text_field :state, class: 'form-control', value: "#{@advert.state}"
+
+		    .row
+		      .col-md-6.col-sm-6
+		        .form-group
+		          = f.label :model_id, "Modèle"
+		          = f.select(:model_id, options_from_collection_for_select(Model.all, :id, :name, @advert.model_id),{include_blank: false}, {class: "form-control m-bot15"})
+
+		  .actions = f.submit 'Modifier mon annonce', class: "btn btn-primary pull-right"
