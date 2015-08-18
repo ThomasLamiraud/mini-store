@@ -1,0 +1,43 @@
+.navbar-default.sidebar role="navigation"
+  .sidebar-nav.navbar-collapse
+    ul#side-menu.nav
+      /! /input-group
+      li
+        = link_to admin_path do
+          i.fa.fa-dashboard.fa-fw
+          | Dashboard
+      li
+        a href="#"
+          i.fa.fa-car.fa-fw
+          | Gestion des Marques
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="#"  Ajouter
+          li
+            a href="#"  Modifier
+
+      li
+        a href="#"
+          i.fa.fa-car.fa-fw
+          | Gestion des Modèles
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="#"  Ajouter
+          li
+            a href="#"  Modifier
+
+      li
+        a href="#"
+          i.fa.fa-shopping-cart.fa-fw
+          | Gestion des Annonces
+          span.fa.arrow
+        ul.nav.nav-second-level
+          li
+            a href="#"  Ajouter
+          li
+            a href="#"  Modifier
+        /! /.nav-second-level
+  /! /.sidebar-collapse
+/! /.navbar-static-side

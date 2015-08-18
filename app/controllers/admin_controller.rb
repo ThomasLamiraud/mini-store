@@ -21,6 +21,10 @@ class AdminController < ApplicationController
     redirect_to me_path, alert: 'champs invalide'
   end
 
+  def admin_only
+    redirect_to :back, alert: 'Access denied.' unless current_user.admin?
+  end
+
   private
 
   def fetch_user
