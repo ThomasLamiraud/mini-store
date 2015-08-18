@@ -14,7 +14,7 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav.navbar-right
         li
           - if user_signed_in?
-            a href="#"
+            = link_to user_path(current_user)
               = "Bonjour #{current_user.first_name}"
           - else
             = link_to 'Se connecter', new_user_session_path

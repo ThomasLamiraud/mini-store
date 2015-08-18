@@ -1,89 +1,77 @@
 = render partial: "layouts/partials/menu"
+= render partial: "layouts/partials/admin_side_bar"
 
-.container
-  h1.text-center Panel Admin
-
-  section.panel
-    header.panel-heading
-      h3 Marques
-
-    table.table.table-striped
-        thead
-          tr
-            th Marque
-            th Date de création
-            th Édition
-            th Suppression
-        - @brands.each do |brand|
-          tbody
-            tr
-              td = brand.name
-              td = brand.created_at
-              td
-                input.btn.btn-primary type="button" value="Édition"
-              td
-                input.btn.btn-danger type="button" value="Suppression"
-
-
-  section.panel
-    header.panel-heading
-      h3 Modèles
-
-    table.table.table-striped
-        thead
-          tr
-            th Modèle
-            th Marque
-            th Date de création
-            th Édition
-            th Suppression
-
-        - @models.each do |model|
-          tbody
-            tr
-              td = model.name
-              td = model.brand.name
-              td = model.created_at
-              td
-                input.btn.btn-primary type="button" value="Édition"
-              td
-                input.btn.btn-danger type="button" value="Suppression"
-
-  section.panel
-    header.panel-heading
-      h3 Annonces
-
-    = link_to "Nouvelle Annonce", new_advert_path, class: "btn btn-success"
-
-    - if alert
-      p.text-success
-        = flash[:alert]
-    - if notice
-      p.text-danger
-        = flash[:notice]
-
-    table.table.table-striped
-        thead
-          tr
-            th Modèle
-            th Marque
-            th Prix
-            th État
-            th Date de création
-            th Édition
-            th Suppression
-
-        - @adverts.each do |advert|
-          tbody
-            tr
-              tbody
-            tr
-              td = advert.model.brand.name
-              td = advert.model.name
-              td = advert.price
-              td = advert.state
-              td = advert.created_at
-              td
-                = link_to "Édition", edit_advert_path(advert.id), class: "btn btn-primary"
-              td
-                = link_to "Suppression", advert_path(advert.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Dashboard
+    /! /.col-lg-12
+  /! /.row
+  .row
+    .col-lg-3.col-md-6
+      .panel.panel-primary
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-car.fa-5x
+            .col-xs-9.text-right
+              .huge
+                = @brands.count
+              div Marques
+        = link_to admin_brands_path do
+          .panel-footer
+            span.pull-left
+            | Voir les marques
+            span.pull-right
+              i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-3.col-md-6
+      .panel.panel-green
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-car.fa-5x
+            .col-xs-9.text-right
+              .huge
+                = @models.count
+              div Modèles
+        = link_to admin_models_path do
+          .panel-footer
+            span.pull-left
+            | Voir les modèles
+            span.pull-right
+              i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-3.col-md-6
+      .panel.panel-yellow
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-shopping-cart.fa-5x
+            .col-xs-9.text-right
+              .huge
+               = @adverts.count
+              div Annonces
+        = link_to admin_adverts_path do
+          .panel-footer
+            span.pull-left
+            | Voir les annonces
+            span.pull-right
+              i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-3.col-md-6
+      .panel.panel-red
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-support.fa-5x
+            .col-xs-9.text-right
+              .huge 0
+              div Commandes
+        a href="#"
+        .panel-footer
+          span.pull-left View Details
+          span.pull-right
+            i.fa.fa-arrow-circle-right
+          .clearfix
+  /! /.row

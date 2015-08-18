@@ -10,31 +10,32 @@ class AdminController < ApplicationController
     return redirect_to admin_path(current_user), alert: t('devise.failure.already_authenticated') if current_user && current_user.role == 'admin'
   end
 
-
   def open_session
     unless @user.nil?
       if @user.valid_password?(secure_params['password'])
         sign_in(@user)
-        return redirect_to admin_path, notice: "connecté"
+        return redirect_to admin_path, notice: 'connecté'
       end
 
     end
-    return redirect_to me_path, alert: "champs invalide"
+    redirect_to me_path, alert: 'champs invalide'
+  end
+
+  def admin_only
+    redirect_to :back, alert: 'Access denied.' unless current_user.admin?
   end
 
   private
 
-    def fetch_user
-      if params[:user].present?
-        @user = User.where(email: params[:user][:email]).take
-      else
-        @user = current_user
-      end
+  def fetch_user
+    if params[:user].present?
+      @user = User.where(email: params[:user][:email]).take
+    else
+      @user = current_user
     end
+  end
 
-    def secure_params
-      params.require(:user).permit(:password, :email)
-    end
-
-
+  def secure_params
+    params.require(:user).permit(:password, :email)
+  end
 end

@@ -6,22 +6,16 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+  - ruby 2.2.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Gem
+  - gem "binding_of_caller"
+  - gem 'rails', '4.1.6'
+  - gem 'pg'
+  - gem "slim-rails"
+  - gem 'devise'
+  - gem 'stripe'
+  - gem 'better_errors'
 
 
 Please feel free to use a different markup language if you do not plan to run
