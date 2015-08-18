@@ -6,8 +6,6 @@
     header.panel-heading
       h3 Annonces
 
-    = link_to "Nouvelle Annonce", new_advert_path, class: "btn btn-success"
-
     - if alert
       p.text-success
         = flash[:alert]
@@ -37,6 +35,6 @@
               td = advert.state
               td = advert.created_at
               td
-                = link_to "Édition", edit_advert_path(advert.id), class: "btn btn-primary"
+                = link_to "Édition", edit_admin_advert_path(advert.id), class: "btn btn-primary"
               td
-                = link_to "Suppression", advert_path(advert.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete
+                = link_to "Suppression", admin_advert_path(advert.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete
