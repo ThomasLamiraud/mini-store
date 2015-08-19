@@ -7,10 +7,12 @@
       h3 Annonces
 
     - if alert
-      p.text-success
+      .alert.alert-success.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
         = flash[:alert]
     - if notice
-      p.text-danger
+      .alert.alert-warning.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
         = flash[:notice]
 
     table.table.table-striped
@@ -33,7 +35,7 @@
               td = advert.model.name
               td = advert.price
               td = advert.state
-              td = advert.created_at
+              td = advert.created_at.strftime("%d/%m/%Y - %H:%M")
               td
                 = link_to "Édition", edit_admin_advert_path(advert.id), class: "btn btn-primary"
               td

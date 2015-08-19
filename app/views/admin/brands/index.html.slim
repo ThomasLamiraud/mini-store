@@ -4,7 +4,16 @@
 #page-wrapper
   section.panel
     header.panel-heading
-      h3 Marques
+      h3 Gestion des Marques
+
+    - if alert
+      .alert.alert-success.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
+        = flash[:alert]
+    - if notice
+      .alert.alert-warning.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
+        = flash[:notice]
 
     table.table.table-striped
         thead
@@ -13,12 +22,13 @@
             th Date de création
             th Édition
             th Suppression
+
         - @brands.each do |brand|
           tbody
             tr
               td = brand.name
-              td = brand.created_at
+              td = brand.created_at.strftime("%d/%m/%Y - %H:%M")
               td
-                input.btn.btn-primary type="button" value="Édition"
+                = link_to "Édition", edit_admin_brand_path(brand.id), class: "btn btn-primary"
               td
-                input.btn.btn-danger type="button" value="Suppression"
+                = link_to "Suppression", admin_brand_path(brand.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete

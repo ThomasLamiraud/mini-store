@@ -13,9 +13,11 @@
           span.fa.arrow
         ul.nav.nav-second-level
           li
-            a href="#"  Ajouter
+            = link_to "Voir", admin_brands_path
           li
-            a href="#"  Modifier
+            = link_to "Ajouter",  new_admin_brand_path
+          li
+            = link_to "Modifier", admin_brands_path
 
       li
         a href="#"
@@ -24,9 +26,11 @@
           span.fa.arrow
         ul.nav.nav-second-level
           li
-            a href="#"  Ajouter
+            = link_to "Voir", admin_models_path
           li
-            a href="#"  Modifier
+            = link_to "Ajouter", new_admin_model_path
+          li
+            = link_to "Modifier", admin_models_path
 
       li
         a href="#"
@@ -34,6 +38,8 @@
           | Gestion des Annonces
           span.fa.arrow
         ul.nav.nav-second-level
+          li
+            = link_to "Voir", admin_adverts_path
           li
             = link_to "Ajouter", new_admin_advert_path
           li

@@ -25,7 +25,7 @@ section.panel
             td = advert.model.name
             td = advert.price
             td = advert.state
-            td = advert.created_at
+            td = advert.created_at.strftime("%d/%m/%Y - %H:%M")
             td = advert.status
             - if advert.status != "vendue" && user_signed_in?
               td

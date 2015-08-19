@@ -6,11 +6,21 @@
     header.panel-heading
       h3 Modèles
 
+    - if alert
+      .alert.alert-success.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
+        = flash[:alert]
+    - if notice
+      .alert.alert-warning.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
+        = flash[:notice]
+
     table.table.table-striped
         thead
           tr
             th Modèle
             th Marque
+            th Année
             th Date de création
             th Édition
             th Suppression
@@ -20,8 +30,9 @@
             tr
               td = model.name
               td = model.brand.name
-              td = model.created_at
+              td = model.year
+              td = model.created_at.strftime("%d/%m/%Y - %H:%M")
               td
-                input.btn.btn-primary type="button" value="Édition"
+                = link_to "Édition", edit_admin_model_path(model.id), class: "btn btn-primary"
               td
-                input.btn.btn-danger type="button" value="Suppression"
+                = link_to "Suppression", admin_model_path(model.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete
