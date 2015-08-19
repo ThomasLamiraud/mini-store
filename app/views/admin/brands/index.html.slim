@@ -17,7 +17,7 @@
           tbody
             tr
               td = brand.name
-              td = brand.created_at
+              td = brand.created_at.strftime("%d/%m/%Y - %H:%M")
               td
                 input.btn.btn-primary type="button" value="Édition"
               td
