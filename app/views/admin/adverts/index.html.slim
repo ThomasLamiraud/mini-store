@@ -7,10 +7,12 @@
       h3 Annonces
 
     - if alert
-      p.text-success
+      .alert.alert-success.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
         = flash[:alert]
     - if notice
-      p.text-danger
+      .alert.alert-warning.alert-dismissable
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
         = flash[:notice]
 
     table.table.table-striped
