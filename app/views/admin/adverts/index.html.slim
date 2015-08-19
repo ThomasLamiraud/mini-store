@@ -33,7 +33,7 @@
               td = advert.model.name
               td = advert.price
               td = advert.state
-              td = advert.created_at
+              td = advert.created_at.strftime("%d/%m/%Y - %H:%M")
               td
                 = link_to "Édition", edit_admin_advert_path(advert.id), class: "btn btn-primary"
               td

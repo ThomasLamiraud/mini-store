@@ -22,8 +22,8 @@ section.panel
             td = current_user.last_name
             td = current_user.email
             td = current_user.role
-            td = current_user.created_at
-            td = current_user.last_sign_in_at
+            td = current_user.created_at.strftime("%d/%m/%Y - %H:%M")
+            td = current_user.last_sign_in_at.strftime("%d/%m/%Y - %H:%M")
 
 
 
@@ -45,5 +45,5 @@ section.panel
         tbody
           tr
             td = order.total_price
-            td = order.created_at
+            td = order.created_at.strftime("%d/%m/%Y - %H:%M")
             td = order.advert_id
