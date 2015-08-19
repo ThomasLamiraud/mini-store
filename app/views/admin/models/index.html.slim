@@ -20,7 +20,7 @@
             tr
               td = model.name
               td = model.brand.name
-              td = model.created_at
+              td = model.created_at.strftime("%d/%m/%Y - %H:%M")
               td
                 input.btn.btn-primary type="button" value="Édition"
               td
