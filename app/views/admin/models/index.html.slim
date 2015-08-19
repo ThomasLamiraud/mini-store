@@ -35,4 +35,4 @@
               td
                 = link_to "Édition", edit_admin_model_path(model.id), class: "btn btn-primary"
               td
-                input.btn.btn-danger type="button" value="Suppression"
+                = link_to "Suppression", admin_model_path(model.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete

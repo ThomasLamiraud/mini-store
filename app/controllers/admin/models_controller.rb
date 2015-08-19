@@ -24,6 +24,11 @@ module Admin
       end
     end
 
+    def destroy
+      @model.destroy
+      redirect_to admin_models_path, alert: "Suppression effectuée avec succès !"
+    end
+
     private
 
     def model_params
