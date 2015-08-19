@@ -8,6 +8,19 @@ module Admin
       @models = Model.all
     end
 
+    def create
+      @model = Model.new(model_params)
+      if @model.save
+        redirect_to admin_models_path, alert: 'Model créé avec succès'
+      else
+        return render :new
+      end
+    end
+
+    def new
+      @model = Model.new
+    end
+
     def edit
 
     end

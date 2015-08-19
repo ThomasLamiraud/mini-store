@@ -1,0 +1,28 @@
+= render partial: "layouts/partials/menu"
+= render partial: "layouts/partials/admin_side_bar"
+
+#page-wrapper
+	.row
+    .col-lg-12
+      h1.page-header Nouveau Modèle
+
+	.row
+		= form_for [:admin, @model] do |f|
+		  .form_title
+		    .row
+		      .col-md-6.col-sm-6
+		        .form-group
+		          = f.label :name, "Nom"
+		          = f.text_field :name, class: 'form-control', value: "#{@model.name}"
+
+            .form-group
+		          = f.label :year, "Année"
+		          = f.text_field :year, class: 'form-control', value: "#{@model.year}"
+
+		    .row
+		      .col-md-6.col-sm-6
+		        .form-group
+		          = f.label :brand_id, "Marque"
+		          = f.select(:brand_id, options_from_collection_for_select(Brand.all, :id, :name),{include_blank: false}, {class: "form-control m-bot15"})
+
+		  .actions = f.submit 'Ajouter le modèle', class: "btn btn-primary pull-right"
