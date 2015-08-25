@@ -1,13 +1,11 @@
-nav.navbar.navbar-default
-  .container-fluid
-    /! Brand and toggle get grouped for better mobile display
+nav.navbar.navbar-inverse role="navigation"
+  .container
     .navbar-header
-      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      / a.navbar-brand href="#"  Mini-Store
       = link_to 'Mini-Store', root_path, class: "navbar-brand"
     /! Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
@@ -23,5 +21,3 @@ nav.navbar.navbar-default
             = link_to 'Se déconnecter', destroy_user_session_path, method: :delete
           - else
             = link_to "S'inscrire", new_user_registration_path
-    /! /.navbar-collapse
-  /! /.container-fluid
