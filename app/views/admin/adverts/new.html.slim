@@ -7,7 +7,7 @@
       h1.page-header Nouvelle Annonce
 
 	.row
-		= form_for [:admin, @advert] do |f|
+		= form_for [:admin, @advert], html: {multipart: true} do |f|
 		  .form_title
 		    .row
 		      .col-md-6.col-sm-6
@@ -26,4 +26,10 @@
 		          = f.label :model_id, "Modèle"
 		          = f.select(:model_id, options_from_collection_for_select(Model.all, :id, :name),{include_blank: false}, {class: "form-control m-bot15"})
 
+				.row
+					.col-md-6.col-sm-6
+						.form-group
+							= f.label :picture
+							= f.file_field :picture
+							
 		  .actions = f.submit 'Ajouter mon annonce', class: "btn btn-primary pull-right"

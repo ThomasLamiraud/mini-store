@@ -1,37 +1,93 @@
 = render partial: "layouts/partials/menu"
 
-section.panel
-  header.panel-heading
-    | Gestion des annonces
-  .panel-body
+.container
+  header.jumbotron.hero-spacer
+    h1 Bienvenue sur Mini-Store !
+    p Vous trouverez ici la voiture de vos rêves à un prix raisonnable.
+  hr/
 
-    table.table.table-striped
-      thead
-        tr
-          th Marque
-          th Modèle
-          th Prix
-          th État
-          th Date de mise en vente
-          th Statut
-          -if user_signed_in?
-            th Achat
+  .row
+    .col-lg-12
+      h3 Les dernières annonces
 
-      - @adverts.includes(:model).each do |advert|
-
-        tbody
-          tr
-            td = advert.model.brand.name
-            td = advert.model.name
-            td = advert.price
-            td = advert.state
-            td = advert.created_at.strftime("%d/%m/%Y - %H:%M")
-            td = advert.status
+  .row.text-center
+    - @adverts_top4.includes(:model).each do |advert|
+      .col-md-3.col-sm-6.hero-feature
+        .thumbnail
+          = image_tag advert.picture.url(:top)
+          .caption
+            h3 = "#{advert.price} €"
+            p
+              = "#{advert.model.brand.name} - #{advert.model.name}"
+            p
             - if advert.status != "vendue" && user_signed_in?
-              td
+              a
                 = form_tag charges_path do |f|
-
                   = hidden_field_tag :advert, advert.id
                   = hidden_field_tag :amount, stripe_price(advert.price)
 
                   script.stripe-button data-amount="#{stripe_price(advert.price)}" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
+            a.btn.btn-default href="#"  Voir Plus
+
+
+  .row
+    .col-lg-12
+      h3.page-header
+        | Toutes les annonces disponibles
+  /! /.row
+  /! Projects Row
+  .row
+    - @adverts.includes(:model).each do |advert|
+      .col-md-4.portfolio-item
+        = image_tag advert.picture.url(:default), class: "img-responsive"
+
+        h3
+          a href="#"  = "#{advert.model.brand.name} #{advert.model.name}"
+        p
+          = "#{advert.price} € - #{advert.state}"
+  /! /.row
+  /! Projects Row
+
+  hr/
+  /! Footer
+  footer
+    .row
+      .col-lg-12
+        p Copyright &copy; Mini-Store 2015
+
+
+/ section.panel
+/   header.panel-heading
+/     | Gestion des annonces
+/   .panel-body
+/
+/     table.table.table-striped
+/       thead
+/         tr
+/           th Marque
+/           th Modèle
+/           th Prix
+/           th État
+/           th Date de mise en vente
+/           th Statut
+/           -if user_signed_in?
+/             th Achat
+/
+/       - @adverts.includes(:model).each do |advert|
+/
+/         tbody
+/           tr
+/             td = advert.model.brand.name
+/             td = advert.model.name
+/             td = advert.price
+/             td = advert.state
+/             td = advert.created_at.strftime("%d/%m/%Y - %H:%M")
+/             td = advert.status
+/             - if advert.status != "vendue" && user_signed_in?
+/               td
+/                 = form_tag charges_path do |f|
+/
+/                   = hidden_field_tag :advert, advert.id
+/                   = hidden_field_tag :amount, stripe_price(advert.price)
+/
+/                   script.stripe-button data-amount="#{stripe_price(advert.price)}" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
