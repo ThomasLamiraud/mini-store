@@ -45,7 +45,7 @@ module Admin
     private
 
     def advert_params
-      params.require(:advert).permit(:price, :state, :model_id)
+      params.require(:advert).permit(:price, :state, :model_id, :picture)
     end
 
     def set_advert

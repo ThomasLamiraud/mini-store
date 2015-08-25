@@ -14,7 +14,7 @@
     - @adverts_top4.includes(:model).each do |advert|
       .col-md-3.col-sm-6.hero-feature
         .thumbnail
-          img alt="" src="http://placehold.it/800x500" /
+          = image_tag advert.picture.url(:top)
           .caption
             h3 = "#{advert.price} €"
             p
@@ -39,8 +39,8 @@
   .row
     - @adverts.includes(:model).each do |advert|
       .col-md-4.portfolio-item
-        a href="#"
-          img.img-responsive alt="" src="http://placehold.it/700x400" /
+        = image_tag advert.picture.url(:default), class: "img-responsive"
+
         h3
           a href="#"  = "#{advert.model.brand.name} #{advert.model.name}"
         p
