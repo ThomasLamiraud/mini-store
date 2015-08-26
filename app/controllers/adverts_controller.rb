@@ -7,7 +7,7 @@ class AdvertsController < ApplicationController
   end
 
   def show
-
+    @adverts_top4 = Advert.order(created_at: :desc).limit(4)
   end
 
   private
