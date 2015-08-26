@@ -18,6 +18,7 @@
     table.table.table-striped
         thead
           tr
+            th Photo
             th Modèle
             th Marque
             th Prix
@@ -31,12 +32,13 @@
             tr
               tbody
             tr
-              td = advert.model.brand.name
-              td = advert.model.name
-              td = advert.price
-              td = advert.state
-              td = advert.created_at.strftime("%d/%m/%Y - %H:%M")
-              td
+              td = image_tag advert.picture.url(:small)
+              td.vertical-align = advert.model.brand.name
+              td.vertical-align = advert.model.name
+              td.vertical-align = advert.price
+              td.vertical-align = advert.state
+              td.vertical-align = advert.created_at.strftime("%d/%m/%Y - %H:%M")
+              td.vertical-align
                 = link_to "Édition", edit_admin_advert_path(advert.id), class: "btn btn-primary"
-              td
+              td.vertical-align
                 = link_to "Suppression", admin_advert_path(advert.id), class: "btn btn-danger", data: {:confirm => 'Etes-vous sûr ?'},method: :delete

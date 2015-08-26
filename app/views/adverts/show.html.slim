@@ -1,0 +1,40 @@
+= render partial: "layouts/partials/menu"
+
+.container
+  .row
+    .col-md-7
+      = image_tag @advert.picture.url(:show), class: "img-responsive"
+    .col-md-5
+      h3 = @advert.model.brand.name
+      h4 = @advert.model.name
+      p = "Prix: #{@advert.price}€"
+      p = "État: #{@advert.state}"
+      p = "Mise en ligne le  #{@advert.created_at.strftime("%d/%m/%Y")}"
+      p
+      - if @advert.status != "vendue" && user_signed_in?
+        a
+          = form_tag charges_path do |f|
+            = hidden_field_tag :@advert, @advert.id
+            = hidden_field_tag :amount, stripe_price(@advert.price)
+
+            script.stripe-button data-amount="#{stripe_price(@advert.price)}" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
+
+  hr/
+
+  .row
+    .col-lg-12
+      h3 Les dernières annonces
+
+  .row.text-center
+    - @adverts_top4.includes(:model).each do |advert|
+      .col-md-3.col-sm-6.hero-feature
+        .thumbnail
+          = link_to advert_path(advert.id) do
+            = image_tag advert.picture.url(:top)
+          .caption
+            h3 = "#{advert.price} €"
+            p
+              = "#{advert.model.brand.name} - #{advert.model.name}"
+            = link_to "Voir Plus", advert_path(advert.id), class: "btn btn-primary"
+
+= render partial: "layouts/partials/footer"
