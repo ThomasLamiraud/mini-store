@@ -14,7 +14,7 @@
 		        .form-group
 		          = f.label :price, "Prix"
 		          = f.text_field :price, class: 'form-control', value: "#{@advert.price}"
-					
+
 		      .col-md-6.col-sm-6
 		        .form-group
 		          = f.label :state, "État"
@@ -25,5 +25,11 @@
 		        .form-group
 		          = f.label :model_id, "Modèle"
 		          = f.select(:model_id, options_from_collection_for_select(Model.all, :id, :name, @advert.model_id),{include_blank: false}, {class: "form-control m-bot15"})
+
+				.row
+					.col-md-6.col-sm-6
+						.form-group
+							= f.label :picture
+							= f.file_field :picture
 
 		  .actions = f.submit 'Modifier mon annonce', class: "btn btn-primary pull-right"
