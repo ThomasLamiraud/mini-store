@@ -36,3 +36,5 @@
             p
               = "#{advert.model.brand.name} - #{advert.model.name}"
             = link_to "Voir Plus", advert_path(advert.id), class: "btn btn-primary"
+
+= render partial: "layouts/partials/footer"
