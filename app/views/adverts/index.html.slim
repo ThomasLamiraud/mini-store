@@ -30,25 +30,23 @@
                   script.stripe-button data-amount="#{stripe_price(advert.price)}" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
             = link_to "Voir Plus", advert_path(advert.id), class: "btn btn-primary"
 
-
-  .row
+  / - raise
+  .row.text-center
     .col-lg-12
-      h3.page-header
-        | Toutes les annonces disponibles
-  /! /.row
-  /! Projects Row
-  .row
-    - @adverts.includes(:model).each do |advert|
-      .col-md-4.portfolio-item
-        = link_to advert_path(advert.id) do
-          = image_tag advert.picture.url(:default), class: "img-responsive"
+      h3 Rechercher
+    .col-lg-12
+      = search_form_for @q, :remote=>"true", class: "form-inline" do |f|
+        .form-group
+          = f.search_field :price_gteq, class: "form-control", placeholder: "Prix supérieur"
 
-        h3
-          = link_to "#{advert.model.brand.name} #{advert.model.name}", advert_path(advert.id)
-        p
-          = "#{advert.price} € - #{advert.state}"
-  /! /.row
-  /! Projects Row
+        .form-group
+          = f.search_field :model_name_cont, class: "form-control", placeholder: "Modèle"
+
+        = f.submit "Chercher", class: "btn btn-default"
+
+
+= render partial: "/adverts/result_advert", locals: {adverts: @adverts}
+
 = render partial: "layouts/partials/footer"
 
 / section.panel
