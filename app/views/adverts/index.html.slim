@@ -14,7 +14,8 @@
     - @adverts_top4.includes(:model).each do |advert|
       .col-md-3.col-sm-6.hero-feature
         .thumbnail
-          = image_tag advert.picture.url(:top)
+          = link_to advert_path(advert.id) do
+            = image_tag advert.picture.url(:top)
           .caption
             h3 = "#{advert.price} €"
             p
@@ -27,7 +28,7 @@
                   = hidden_field_tag :amount, stripe_price(advert.price)
 
                   script.stripe-button data-amount="#{stripe_price(advert.price)}" data-description=("A month's subscription") data-key="#{Rails.configuration.stripe[:publishable_key]}" src="https://checkout.stripe.com/checkout.js"
-            a.btn.btn-default href="#"  Voir Plus
+            = link_to "Voir Plus", advert_path(advert.id), class: "btn btn-primary"
 
 
   .row
@@ -39,10 +40,11 @@
   .row
     - @adverts.includes(:model).each do |advert|
       .col-md-4.portfolio-item
-        = image_tag advert.picture.url(:default), class: "img-responsive"
+        = link_to advert_path(advert.id) do
+          = image_tag advert.picture.url(:default), class: "img-responsive"
 
         h3
-          a href="#"  = "#{advert.model.brand.name} #{advert.model.name}"
+          = link_to "#{advert.model.brand.name} #{advert.model.name}", advert_path(advert.id)
         p
           = "#{advert.price} € - #{advert.state}"
   /! /.row
